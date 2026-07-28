@@ -11,8 +11,9 @@ composeBom = "2026.02.01"
 appcompat = "1.6.1"
 material = "1.10.0"
 room = "2.8.4"
-ksp = "2.3.4"
+ksp = "2.3.9"
 room3CommonJvm = "3.0.0"
+hilt = "2.60.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,16 +32,19 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-room-runtime = { group = "androidx.room:room-runtime", name = "room-runtime", version.ref = "room"}
-room-compiler = { group = "androidx.room:room-compiler", name = "room-compiler", version.ref = "room"}
-room-ktx = { group = "androidx.room:room-ktx", name = "room-ktx", version.ref = "room"}
-room-testing = { group = "androidx.room:room-testing", name = "room-testing", version.ref = "room"}
-room-paging = { group = "androidx.room:room-paging", name = "room-paging", version.ref = "room"}
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room"}
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room"}
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room"}
+room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room"}
+room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room"}
 androidx-room3-common-jvm = { group = "androidx.room3", name = "room3-common-jvm", version.ref = "room3CommonJvm" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 
