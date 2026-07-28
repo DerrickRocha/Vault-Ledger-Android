@@ -114,4 +114,15 @@ class CardItemDaoTest {
         val allCards = cardItemDao.getAll()
         assertEquals(0, allCards.size)
     }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun invalidValuationThrowsException() {
+        CardItemEntity(
+            id = 1,
+            name = "Invalid Card",
+            cardSet = "Set",
+            gradingCondition = GradingCondition.MINT,
+            valuation = 11.0
+        )
+    }
 }
