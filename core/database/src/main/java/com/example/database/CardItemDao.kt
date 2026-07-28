@@ -1,7 +1,7 @@
 package com.example.database
 
-import androidx.room3.Dao
-import androidx.room3.Query
+import androidx.room.Dao
+import androidx.room.Query
 import com.example.database.entities.CardItemEntity
 
 @Dao
