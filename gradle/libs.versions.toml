@@ -11,6 +11,8 @@ composeBom = "2026.02.01"
 appcompat = "1.6.1"
 material = "1.10.0"
 room = "2.8.4"
+ksp = "2.3.4"
+room3CommonJvm = "3.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,9 +36,11 @@ room-compiler = { group = "androidx.room:room-compiler", name = "room-compiler",
 room-ktx = { group = "androidx.room:room-ktx", name = "room-ktx", version.ref = "room"}
 room-testing = { group = "androidx.room:room-testing", name = "room-testing", version.ref = "room"}
 room-paging = { group = "androidx.room:room-paging", name = "room-paging", version.ref = "room"}
+androidx-room3-common-jvm = { group = "androidx.room3", name = "room3-common-jvm", version.ref = "room3CommonJvm" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 
