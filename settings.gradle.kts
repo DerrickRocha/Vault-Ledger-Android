@@ -25,3 +25,7 @@ dependencyResolutionManagement {
 rootProject.name = "VaultLedger"
 include(":app")
 include(":core:model")
+include(":core:database")
+include(":core:network")
+include(":feature:home")
+include(":feature:ledger")
