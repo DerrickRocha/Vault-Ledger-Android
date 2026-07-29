@@ -95,7 +95,6 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
 
         }
     }
-
 }
 
 @Composable
