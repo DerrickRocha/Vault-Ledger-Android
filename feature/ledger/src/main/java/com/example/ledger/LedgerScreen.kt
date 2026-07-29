@@ -19,60 +19,24 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.model.CardItem
 import com.example.model.GradingCondition
 import com.example.ui.components.CardImage
 import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-
-data class LedgerScreenState(
-    val isLoading: Boolean = false,
-    val items: ImmutableList<CardItem> = persistentListOf(),
-    val error: String? = null
-)
-
-val cards = persistentListOf(
-    CardItem(
-        1,
-        "Rise of the Dark Realms",
-        "Foundations",
-        GradingCondition.GEM_MINT,
-        valuation = 10.0,
-        ""
-    ),
-    CardItem(
-        2,
-        "Liliana Dreadhorde General fjkljasd fkljsdf lkjdsflk jsdflkj dsflk",
-        "Foundations",
-        GradingCondition.GEM_MINT,
-        valuation = 9.8,
-        ""
-    ),
-    CardItem(
-        3,
-        "Sadisi, Blood Tyrant",
-        "Foundations",
-        GradingCondition.GEM_MINT,
-        valuation = 9.8,
-        ""
-    )
-)
 
 @Composable
-fun LedgerScreen(modifier: Modifier) {
-    val state by remember { mutableStateOf(LedgerScreenState(items = cards)) }
+fun LedgerScreen(modifier: Modifier, viewModel: LedgerViewModel = hiltViewModel()) {
+    val state by viewModel.state.collectAsState()
     LedgerScreenContent(state, modifier)
-
-
 }
 
 @Composable
