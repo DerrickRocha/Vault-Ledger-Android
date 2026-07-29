@@ -12,7 +12,8 @@ data class CardItemEntity(
     val name: String,
     @ColumnInfo(name = "card_set") val cardSet: String,
     @ColumnInfo(name = "grading_condition") val gradingCondition: GradingCondition,
-    val valuation: Double
+    val valuation: Double,
+    @ColumnInfo(name = "image_url")val imageUrl: String
 ) {
     init {
         require(valuation in 0.0..10.0) {
@@ -26,7 +27,8 @@ fun CardItemEntity.asExternalModel() = CardItem(
     name = name,
     cardSet = cardSet,
     gradingCondition = gradingCondition,
-    valuation = valuation
+    valuation = valuation,
+    imageUrl = imageUrl
 )
 
 fun CardItem.asEntity() = CardItemEntity(
@@ -34,5 +36,6 @@ fun CardItem.asEntity() = CardItemEntity(
     name = name,
     cardSet = cardSet,
     gradingCondition = gradingCondition,
-    valuation = valuation
+    valuation = valuation,
+    imageUrl = imageUrl
 )

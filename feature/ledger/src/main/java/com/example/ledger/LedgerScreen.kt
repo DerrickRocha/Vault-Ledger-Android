@@ -46,21 +46,24 @@ val cards = persistentListOf(
         "Rise of the Dark Realms",
         "Foundations",
         GradingCondition.GEM_MINT,
-        valuation = 10.0
+        valuation = 10.0,
+        ""
     ),
     CardItem(
         2,
-        "Liliana Dreadhorde General",
+        "Liliana Dreadhorde General fjkljasd fkljsdf lkjdsflk jsdflkj dsflk",
         "Foundations",
         GradingCondition.GEM_MINT,
-        valuation = 9.8
+        valuation = 9.8,
+        ""
     ),
     CardItem(
         3,
         "Sadisi, Blood Tyrant",
         "Foundations",
         GradingCondition.GEM_MINT,
-        valuation = 9.8
+        valuation = 9.8,
+        ""
     )
 )
 
@@ -104,7 +107,7 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
     Card(
         modifier = Modifier
             .width(170.dp)
-            .height(350.dp),
+            .height(400.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.DarkGray // Or MaterialTheme.colorScheme.primary
         ),
@@ -118,11 +121,11 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
         ) {
             CardImage(null, modifier = Modifier.width(168.dp).height(240.dp), "")
 
-            TextHeader(name)
-            Spacer(Modifier.height(6.dp))
             Column(modifier = Modifier.fillMaxSize()) {
+                TextHeader(name)
+                Spacer(Modifier.height(6.dp))
                 WhiteText(set)
-                WhiteText(condition.name)
+                WhiteText(condition.gradeName)
                 WhiteText(valuation.toString())
             }
 
@@ -133,7 +136,7 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
 
 @Composable
 fun TextHeader(text: String){
-    Text(text, color = Color.White, autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp), maxLines = 2)
+    Text(text, color = Color.White, autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp, minFontSize = 12.sp), maxLines = 2)
 }
 
 @Composable

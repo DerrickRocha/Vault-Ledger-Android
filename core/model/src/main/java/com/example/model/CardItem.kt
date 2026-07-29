@@ -5,5 +5,6 @@ data class CardItem(
     val name: String,
     val cardSet: String,
     val gradingCondition: GradingCondition,
-    val valuation: Double
+    val valuation: Double,
+    val imageUrl: String
 )

@@ -7,7 +7,7 @@ import com.example.database.dao.CardItemDao
 import com.example.database.entities.CardItemEntity
 import com.example.database.util.VaultLedgerConverters
 
-@Database(entities = [CardItemEntity::class], version = 1)
+@Database(entities = [CardItemEntity::class], version = 2)
 @TypeConverters(VaultLedgerConverters::class)
 abstract class VaultLedgerDatabase: RoomDatabase() {
     abstract fun cardItemDao(): CardItemDao
