@@ -1,3 +1,0 @@
-- `[ ]` Update `LedgerItem` in `LedgerScreen.kt` with fixed dimensions
-- `[ ]` Verify changes in `LedgerScreenPreview`
-- `[ ]` Create walkthrough artifact
