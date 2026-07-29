@@ -15,6 +15,7 @@ ksp = "2.3.9"
 room3CommonJvm = "3.0.0"
 hilt = "2.60.1"
 immutableCollections = "0.5.1"
+runtime = "1.11.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,7 +41,8 @@ room-testing = { group = "androidx.room", name = "room-testing", version.ref = "
 room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room"}
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt"}
-immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "hilt"}
+immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "immutableCollections"}
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
