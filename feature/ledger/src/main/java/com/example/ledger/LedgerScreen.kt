@@ -83,7 +83,9 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
                 .padding(8.dp),
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            CardImage(null, modifier = Modifier.width(168.dp).height(240.dp), "")
+            CardImage(null, modifier = Modifier
+                .width(168.dp)
+                .height(240.dp), "")
 
             Column(modifier = Modifier.fillMaxSize()) {
                 TextHeader(name)
@@ -92,14 +94,18 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
                 WhiteText(condition.gradeName)
                 WhiteText(valuation.toString())
             }
-
         }
     }
 }
 
 @Composable
-fun TextHeader(text: String){
-    Text(text, color = Color.White, autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp, minFontSize = 12.sp), maxLines = 2)
+fun TextHeader(text: String) {
+    Text(
+        text,
+        color = Color.White,
+        autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp, minFontSize = 12.sp),
+        maxLines = 2
+    )
 }
 
 @Composable
