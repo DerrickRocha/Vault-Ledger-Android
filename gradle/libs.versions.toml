@@ -12,10 +12,11 @@ appcompat = "1.6.1"
 material = "1.10.0"
 room = "2.8.4"
 ksp = "2.3.9"
-room3CommonJvm = "3.0.0"
 hilt = "2.60.1"
 immutableCollections = "0.5.1"
 runtime = "1.11.4"
+material3 = "1.4.0"
+coil = "3.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +44,9 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt"}
 immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "immutableCollections"}
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+coil-image = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil"}
+coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

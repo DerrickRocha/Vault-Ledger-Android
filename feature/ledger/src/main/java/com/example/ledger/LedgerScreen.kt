@@ -1,6 +1,5 @@
 package com.example.ledger
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -16,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -26,12 +25,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_TYPE_NORMAL
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.model.CardItem
 import com.example.model.GradingCondition
+import com.example.ui.components.CardImage
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
@@ -89,7 +88,7 @@ fun LedgerGrid(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black),
-        columns = GridCells.FixedSize(174.dp),
+        columns = GridCells.FixedSize(170.dp),
         horizontalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterHorizontally),
         verticalArrangement = Arrangement.spacedBy(spacing),
         contentPadding = PaddingValues(spacing),
@@ -104,8 +103,8 @@ fun LedgerGrid(
 fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation: Double) {
     Card(
         modifier = Modifier
-            .width(174.dp)
-            .height(400.dp),
+            .width(170.dp)
+            .height(350.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.DarkGray // Or MaterialTheme.colorScheme.primary
         ),
@@ -115,17 +114,28 @@ fun LedgerItem(name: String, set: String, condition: GradingCondition, valuation
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp),
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
+            CardImage(null, modifier = Modifier.width(168.dp).height(240.dp), "")
 
-            WhiteText(name)
-            Spacer(Modifier.height(4.dp))
-            WhiteText(set)
-            WhiteText(condition.name)
-            WhiteText(valuation.toString())
+            TextHeader(name)
+            Spacer(Modifier.height(6.dp))
+            Column(modifier = Modifier.fillMaxSize()) {
+                WhiteText(set)
+                WhiteText(condition.name)
+                WhiteText(valuation.toString())
+            }
+
         }
     }
 
 }
+
+@Composable
+fun TextHeader(text: String){
+    Text(text, color = Color.White, autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp), maxLines = 2)
+}
+
 @Composable
 fun WhiteText(text: String) {
     Text(text, color = Color.White)
