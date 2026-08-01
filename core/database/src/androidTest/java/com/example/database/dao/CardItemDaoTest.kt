@@ -46,7 +46,9 @@ class CardItemDaoTest {
             name = "Black Lotus",
             cardSet = "Alpha",
             gradingCondition = GradingCondition.GEM_MINT,
-            valuation = 10.0
+            valuation = 10.0,
+            imageUrl = "",
+            currentPriceCents = 100000
         )
         cardItemDao.insert(card)
         val allCards = cardItemDao.getAll()
@@ -56,8 +58,8 @@ class CardItemDaoTest {
     @Test
     @Throws(Exception::class)
     fun getAllByFlow() = runBlocking {
-        val card1 = CardItemEntity(1, "Card 1", "Set A", GradingCondition.NEAR_MINT, 10.0)
-        val card2 = CardItemEntity(2, "Card 2", "Set B", GradingCondition.HEAVILY_PLAYED, 5.0)
+        val card1 = CardItemEntity(1, "Card 1", "Set A", GradingCondition.NEAR_MINT, 10.0, "", 0)
+        val card2 = CardItemEntity(2, "Card 2", "Set B", GradingCondition.HEAVILY_PLAYED, 5.0, "", 0)
         cardItemDao.insertAll(listOf(card1, card2))
 
         val allCards = cardItemDao.getAllByFlow().first()
@@ -69,7 +71,7 @@ class CardItemDaoTest {
     @Test
     @Throws(Exception::class)
     fun getByIdFlow() = runBlocking {
-        val card = CardItemEntity(1, "Test Card", "Set", GradingCondition.LIGHTLY_PLAYED, 8.0)
+        val card = CardItemEntity(1, "Test Card", "Set", GradingCondition.LIGHTLY_PLAYED, 8.0, "", 0)
         cardItemDao.insert(card)
 
         val retrievedCard = cardItemDao.getById(1).first()
@@ -82,7 +84,7 @@ class CardItemDaoTest {
     @Test
     @Throws(Exception::class)
     fun updateCard() = runBlocking {
-        val card = CardItemEntity(1, "Test Card", "Set", GradingCondition.MINT, 9.0)
+        val card = CardItemEntity(1, "Test Card", "Set", GradingCondition.MINT, 9.0, "", 0)
         cardItemDao.insert(card)
 
         val updatedCard = card.copy(valuation = 9.5)
@@ -95,7 +97,7 @@ class CardItemDaoTest {
     @Test
     @Throws(Exception::class)
     fun deleteCard() = runBlocking {
-        val card = CardItemEntity(1, "Test Card", "Set", GradingCondition.GEM_MINT, 10.0)
+        val card = CardItemEntity(1, "Test Card", "Set", GradingCondition.GEM_MINT, 10.0, "", 0)
         cardItemDao.insert(card)
         cardItemDao.delete(card)
 
@@ -106,8 +108,8 @@ class CardItemDaoTest {
     @Test
     @Throws(Exception::class)
     fun deleteAll() = runBlocking {
-        val card1 = CardItemEntity(1, "Card 1", "Set A", GradingCondition.NEAR_MINT, 10.0)
-        val card2 = CardItemEntity(2, "Card 2", "Set B", GradingCondition.DAMAGED, 5.0)
+        val card1 = CardItemEntity(1, "Card 1", "Set A", GradingCondition.NEAR_MINT, 10.0, "", 0)
+        val card2 = CardItemEntity(2, "Card 2", "Set B", GradingCondition.DAMAGED, 5.0, "", 0)
         cardItemDao.insertAll(listOf(card1, card2))
 
         cardItemDao.deleteAll()
@@ -122,7 +124,9 @@ class CardItemDaoTest {
             name = "Invalid Card",
             cardSet = "Set",
             gradingCondition = GradingCondition.MINT,
-            valuation = 11.0
+            valuation = 11.0,
+            "",
+            0
         )
     }
 }
