@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,6 +18,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,7 +31,10 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.model.CardItem
+import com.example.ui.Black
 import com.example.ui.components.CardImage
+import com.example.ui.components.PercentComponent
+import com.example.ui.DarkGray
 import kotlinx.collections.immutable.ImmutableList
 
 @Composable
@@ -53,7 +58,7 @@ fun LedgerGrid(
     LazyVerticalGrid(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(Black),
         columns = GridCells.FixedSize(170.dp),
         horizontalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterHorizontally),
         verticalArrangement = Arrangement.spacedBy(spacing),
@@ -69,10 +74,10 @@ fun LedgerGrid(
 fun LedgerItem(item: CardItem) {
     Card(
         modifier = Modifier
-            .width(170.dp)
-            .height(400.dp),
+            .fillMaxHeight()
+            .width(170.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.DarkGray // Or MaterialTheme.colorScheme.primary
+            containerColor = DarkGray // Or MaterialTheme.colorScheme.primary
         ),
     ) {
 
@@ -96,6 +101,10 @@ fun LedgerItem(item: CardItem) {
                 WhiteText(item.cardSet)
                 WhiteText(item.gradingCondition.gradeName)
                 WhiteText(item.valuation.toString())
+                Spacer(Modifier.height(6.dp))
+                PercentComponent(item.currentPriceCents, item.priceChangePercent)
+                Spacer(Modifier.height(8.dp))
+
             }
         }
     }
@@ -107,13 +116,18 @@ fun TextHeader(text: String) {
         text,
         color = Color.White,
         autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp, minFontSize = 12.sp),
-        maxLines = 2
+        maxLines = 2,
+        style = MaterialTheme.typography.labelLarge
     )
 }
 
 @Composable
-fun WhiteText(text: String) {
-    Text(text, color = Color.White)
+fun WhiteText(text: String, color: Color = Color.White) {
+    Text(
+        text,
+        color = color,
+        style = MaterialTheme.typography.labelMedium
+    )
 }
 
 @Preview()

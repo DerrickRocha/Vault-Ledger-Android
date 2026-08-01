@@ -11,7 +11,7 @@ import coil3.compose.AsyncImage
 fun CardImage(image: String?, modifier: Modifier, description: String) {
     if (image == null) {
         Image(
-            painterResource(com.example.ui.R.drawable.outline_image_24),
+            painterResource(com.example.ui.R.drawable.rise),
             modifier = modifier,
             contentDescription = description
         )

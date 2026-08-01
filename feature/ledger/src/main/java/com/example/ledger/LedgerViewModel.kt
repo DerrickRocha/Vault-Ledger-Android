@@ -31,7 +31,9 @@ val cards = persistentListOf(
         "Foundations",
         GradingCondition.GEM_MINT,
         valuation = 10.0,
-        ""
+        "",
+        currentPriceCents = 2900,
+        priceChangePercent = 2.23f
     ),
     CardItem(
         2,
@@ -39,7 +41,8 @@ val cards = persistentListOf(
         "Foundations",
         GradingCondition.GEM_MINT,
         valuation = 9.8,
-        ""
+        "",
+        priceChangePercent = -3.33f
     ),
     CardItem(
         3,
