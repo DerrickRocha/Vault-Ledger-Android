@@ -24,17 +24,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.model.CardItem
-import com.example.ui.Black
 import com.example.ui.components.CardImage
 import com.example.ui.components.PercentComponent
-import com.example.ui.DarkGray
+import com.example.ui.VaultLedgerTheme
 import kotlinx.collections.immutable.ImmutableList
 
 @Composable
@@ -45,7 +43,7 @@ fun LedgerScreen(modifier: Modifier, viewModel: LedgerViewModel = hiltViewModel(
 
 @Composable
 fun LedgerScreenContent(state: LedgerScreenState, modifier: Modifier = Modifier) {
-    Box(modifier = modifier.background(Color.White)) {
+    Box(modifier = modifier) {
         LedgerGrid(state.items)
     }
 }
@@ -57,8 +55,7 @@ fun LedgerGrid(
     val spacing = 16.dp
     LazyVerticalGrid(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Black),
+            .fillMaxSize(),
         columns = GridCells.FixedSize(170.dp),
         horizontalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterHorizontally),
         verticalArrangement = Arrangement.spacedBy(spacing),
@@ -77,14 +74,14 @@ fun LedgerItem(item: CardItem) {
             .fillMaxHeight()
             .width(170.dp),
         colors = CardDefaults.cardColors(
-            containerColor = DarkGray // Or MaterialTheme.colorScheme.primary
+            containerColor = MaterialTheme.colorScheme.surface
         ),
     ) {
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp),
+                .padding(4.dp),
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
             CardImage(
@@ -95,16 +92,15 @@ fun LedgerItem(item: CardItem) {
                 description = item.name
             )
 
-            Column(modifier = Modifier.fillMaxSize()) {
+            Column(modifier = Modifier.fillMaxSize().padding(horizontal = 4.dp)) {
                 TextHeader(item.name)
                 Spacer(Modifier.height(6.dp))
-                WhiteText(item.cardSet)
-                WhiteText(item.gradingCondition.gradeName)
-                WhiteText(item.valuation.toString())
+                LedgerSecondaryText(item.cardSet)
+                LedgerSecondaryText(item.gradingCondition.gradeName)
+                LedgerSecondaryText(item.valuation.toString())
                 Spacer(Modifier.height(6.dp))
                 PercentComponent(item.currentPriceCents, item.priceChangePercent)
-                Spacer(Modifier.height(8.dp))
-
+                Spacer(Modifier.height(4.dp))
             }
         }
     }
@@ -114,24 +110,26 @@ fun LedgerItem(item: CardItem) {
 fun TextHeader(text: String) {
     Text(
         text,
-        color = Color.White,
         autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp, minFontSize = 12.sp),
         maxLines = 2,
-        style = MaterialTheme.typography.labelLarge
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary
     )
 }
 
 @Composable
-fun WhiteText(text: String, color: Color = Color.White) {
+fun LedgerSecondaryText(text: String) {
     Text(
         text,
-        color = color,
-        style = MaterialTheme.typography.labelMedium
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onSurface
     )
 }
 
 @Preview()
 @Composable
 fun LedgerScreenPreview() {
-    LedgerScreenContent(LedgerScreenState(items = cards))
+    VaultLedgerTheme() {
+        LedgerScreenContent(LedgerScreenState(items = cards))
+    }
 }
