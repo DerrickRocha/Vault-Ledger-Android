@@ -9,7 +9,7 @@ import com.example.ui.VaultLedgerTheme
 
 @Composable
 fun App() {
-    VaultLedgerTheme {
+    VaultLedgerTheme() {
         Scaffold() { paddingValues ->
             LedgerScreen(Modifier.padding(paddingValues))
         }

@@ -2,17 +2,36 @@ package com.example.ui
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.magic_game),
+        ),
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.magic_game),
+        ),
+        //fontWeight = FontWeight.Normal,
+        fontSize = 11.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
+    labelMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.magic_game)),
+        fontSize = 14.sp,
+    ),
+    labelLarge = TextStyle(
+        fontFamily = FontFamily(Font(R.font.magic_game)),
+        fontSize = 16.sp
     )
     /* Other default text styles to override
     titleLarge = TextStyle(
@@ -30,4 +49,9 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+)
+
+val MyCustomFont = FontFamily(
+    Font(R.font.magic, FontWeight.Normal),
+    Font(R.font.magic, FontWeight.Bold)
 )

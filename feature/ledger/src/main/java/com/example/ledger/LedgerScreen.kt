@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -71,7 +70,7 @@ fun LedgerGrid(
 fun LedgerItem(item: CardItem) {
     Card(
         modifier = Modifier
-            .fillMaxHeight()
+            .height(400.dp)
             .width(170.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -92,15 +91,31 @@ fun LedgerItem(item: CardItem) {
                 description = item.name
             )
 
-            Column(modifier = Modifier.fillMaxSize().padding(horizontal = 4.dp)) {
-                TextHeader(item.name)
-                Spacer(Modifier.height(6.dp))
-                LedgerSecondaryText(item.cardSet)
-                LedgerSecondaryText(item.gradingCondition.gradeName)
-                LedgerSecondaryText(item.valuation.toString())
-                Spacer(Modifier.height(6.dp))
-                PercentComponent(item.currentPriceCents, item.priceChangePercent)
-                Spacer(Modifier.height(4.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 0.dp, bottom = 8.dp, start = 6.dp, end = 6.dp)
+                    .background(
+                        MaterialTheme.colorScheme.surfaceVariant
+                    )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = 6.dp, end = 6.dp, top = 4.dp, bottom = 4.dp)
+                        .background(
+                            MaterialTheme.colorScheme.surfaceVariant
+                        )
+                ) {
+                    TextHeader(item.name)
+                    Spacer(Modifier.height(6.dp))
+                    LedgerSecondaryText(item.cardSet)
+                    LedgerSecondaryText(item.gradingCondition.gradeName)
+                    LedgerSecondaryText(item.valuation.toString())
+                    Spacer(Modifier.height(6.dp))
+                    PercentComponent(item.currentPriceCents, item.priceChangePercent)
+                    Spacer(Modifier.height(4.dp))
+                }
             }
         }
     }
@@ -112,8 +127,8 @@ fun TextHeader(text: String) {
         text,
         autoSize = TextAutoSize.StepBased(maxFontSize = 16.sp, minFontSize = 12.sp),
         maxLines = 2,
-        style = MaterialTheme.typography.labelLarge,
-        color = MaterialTheme.colorScheme.primary
+        color = MaterialTheme.colorScheme.onBackground,
+        style = MaterialTheme.typography.labelMedium,
     )
 }
 
@@ -121,15 +136,15 @@ fun TextHeader(text: String) {
 fun LedgerSecondaryText(text: String) {
     Text(
         text,
-        style = MaterialTheme.typography.labelMedium,
-        color = MaterialTheme.colorScheme.onSurface
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        style = MaterialTheme.typography.labelSmall
     )
 }
 
 @Preview()
 @Composable
 fun LedgerScreenPreview() {
-    VaultLedgerTheme() {
+    VaultLedgerTheme(darkTheme = true) {
         LedgerScreenContent(LedgerScreenState(items = cards))
     }
 }

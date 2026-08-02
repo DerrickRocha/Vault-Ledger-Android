@@ -8,17 +8,20 @@ val LorcanaAmber = Color(0xFFF5B202)
 val LorcanaAmethyst = Color(0xFF81377B)
 val LorcanaEmerald = Color(0xFF2A8934)
 val LorcanaRuby = Color(0xFFD3082F)
-val LorcanaSapphire = Color(0xFF0189C4)
+val LorcanaSapphire = Color(0xFF215297)
 val LorcanaSteel = Color(0xFF9FA8B4)
+val MtgGray = Color(0xFFDCDDDA)
 
 // Brand Colors
 val LorcanaDeepBlue = Color(0xFF242946)
-val LorcanaGold = Color(0xFFB25421)
+val LorcanaMediumBlue = Color(0xFF151722)
+val SurfaceContainer = Color(0xFF1F2332)
+val LorcanaGold = Color(0xFFE8C786)
 val LorcanaCream = Color(0xFFF3E0C5) // Parchment
 val LorcanaDarkBrown = Color(0xFF020101)
 val LorcanaDarkGray = Color(0xFF524E41)
 val lorcanaMediumBrown = Color(0xFFBFA984)
-val lorcanaLightBrown = Color(0xFFD1BE8F)
+val lorcanaLightBrown = Color(0xB4D1BE8F)
 
 
 // M3 Light Roles
@@ -48,12 +51,12 @@ val md_theme_dark_onSecondary = Color(0xFF402D00)
 val md_theme_dark_tertiary = Color(0xFFF2B0E8) // Lighter Amethyst
 val md_theme_dark_onTertiary = Color(0xFF4D164B)
 val md_theme_dark_onError = Color(0xFF690005)
-val md_theme_dark_background = LorcanaDarkBrown
+val md_theme_dark_background = LorcanaDeepBlue
 val md_theme_dark_onBackground = LorcanaCream
-val md_theme_dark_surface = LorcanaDarkBrown
-val md_theme_dark_onSurface = LorcanaCream
-val md_theme_dark_surfaceVariant = Color(0xFF44474F)
-val md_theme_dark_onSurfaceVariant = Color(0xFFC4C6D0)
+val md_theme_dark_surface = LorcanaMediumBlue
+val md_theme_dark_onSurface = Color.White
+val md_theme_dark_surfaceVariant = SurfaceContainer
+val md_theme_dark_onSurfaceVariant = MtgGray
 val md_theme_dark_outline = Color(0xFF8E9099)
 
 val md_theme_dark_error = Color(0xFFFFB4AB)
